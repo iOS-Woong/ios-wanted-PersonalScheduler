@@ -7,6 +7,8 @@ target 'PersonalScheduler' do
 pod 'KakaoSDKCommon'
 pod 'KakaoSDKAuth'
 pod 'KakaoSDKUser'
+pod 'FirebaseAnalytics'
+pod 'FirebaseAuth'
 
   # Pods for PersonalScheduler
 
