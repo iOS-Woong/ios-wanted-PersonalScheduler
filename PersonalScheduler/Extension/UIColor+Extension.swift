@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIColor {
-    static let mainColor = UIColor(displayP3Red: 0.075,
+    static let facebookColor = UIColor(displayP3Red: 0.075,
                                    green: 0.114,
                                    blue: 0.255,
                                    alpha: 1)

@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         
         label.text = "새로운 이동 기준, 타다"
-        label.textColor = .mainColor
+        label.textColor = .facebookColor
         label.font = UIFont.boldSystemFont(ofSize: 25)
         
         return label
@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
                     재탑승률 90%
                     """
         label.numberOfLines = 0
-        label.textColor = .mainColor
+        label.textColor = .facebookColor
         label.font = UIFont.systemFont(ofSize: 15)
         
         return label
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         
         button.setTitle("페이스북으로 시작하기", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .mainColor
+        button.backgroundColor = .facebookColor
         
         return button
     }()
@@ -145,6 +145,16 @@ class LoginViewController: UIViewController {
             //TODO: 페이스북 로그인
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
+        
+        let emailLoginAction = UIAction { [weak self] _ in
+            let signUpViewModel = SignUpViewModel()
+            let emailViewController = EmailViewController(signUpviewModel: signUpViewModel)
+            let navigationController = UINavigationController(rootViewController: emailViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self?.present(navigationController, animated: true)
+        }
+        emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)
+        
     }
     
     private func setupViews() {
