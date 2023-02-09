@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let loginViewModel = LoginViewModel()
+    private let loginViewModel: LoginViewModel
     
     let headLabel = {
         let label = UILabel()
@@ -118,6 +118,15 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    init(loginViewModel: LoginViewModel) {
+        self.loginViewModel = loginViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBackground()
@@ -134,7 +143,6 @@ class LoginViewController: UIViewController {
         
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
-            self?.loginViewModel.kakaoLogout()
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
     }
