@@ -9,10 +9,12 @@ import UIKit
 
 protocol UserInputable {
     var signUpViewModel: SignUpViewModel { get }
+    var page: Page { get }
     var descriptionLabel: CustomLabel { get }
     var userInformationInputTextFiled: CustomTextFiled { get }
     var actionButton: CustomButton { get }
-    init(signUpviewModel: SignUpViewModel)
+        
+    init(signUpviewModel: SignUpViewModel, page: Page)
 }
 
 extension UserInputable {

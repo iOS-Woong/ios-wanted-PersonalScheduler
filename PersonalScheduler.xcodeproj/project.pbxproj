@@ -13,15 +13,15 @@
 		63AAAB0B2967EA2700775EC3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0A2967EA2700775EC3 /* Assets.xcassets */; };
 		63AAAB0E2967EA2700775EC3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63AAAB0C2967EA2700775EC3 /* LaunchScreen.storyboard */; };
 		D2244DDD29951C5000FAA282 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2244DDC29951C5000FAA282 /* GoogleService-Info.plist */; };
-		D2244DDF2995218F00FAA282 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DDE2995218F00FAA282 /* PhoneViewController.swift */; };
 		D2244DE12995224400FAA282 /* UserInputable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE02995224400FAA282 /* UserInputable.swift */; };
 		D2244DE429952B2200FAA282 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE329952B2200FAA282 /* EmailViewController.swift */; };
-		D2244DE629952B4000FAA282 /* PWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE529952B4000FAA282 /* PWViewController.swift */; };
 		D2244DE829952B6500FAA282 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE729952B6500FAA282 /* SignUpViewModel.swift */; };
 		D2244DEE29952D5D00FAA282 /* CustomUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */; };
+		D26293A229959156003A6D7A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26293A129959156003A6D7A /* Page.swift */; };
 		D2C688B72992F122001E9114 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B62992F122001E9114 /* AppKeys.swift */; };
 		D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B82994DEA6001E9114 /* LoginViewModel.swift */; };
 		D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */; };
+		D2D6600B29979347007D75C2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6600A29979347007D75C2 /* Observable.swift */; };
 		DCCD84ED4350F8AF6C38ACEE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A719DF145223ACD47F2AB3 /* Pods_PersonalScheduler.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,15 +37,15 @@
 		97C94ABBCE7DE0AC38738842 /* Pods-PersonalScheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.debug.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		A55D918FE2E51015C246B550 /* Pods-PersonalScheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalScheduler.release.xcconfig"; path = "Target Support Files/Pods-PersonalScheduler/Pods-PersonalScheduler.release.xcconfig"; sourceTree = "<group>"; };
 		D2244DDC29951C5000FAA282 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		D2244DDE2995218F00FAA282 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		D2244DE02995224400FAA282 /* UserInputable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputable.swift; sourceTree = "<group>"; };
 		D2244DE329952B2200FAA282 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
-		D2244DE529952B4000FAA282 /* PWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWViewController.swift; sourceTree = "<group>"; };
 		D2244DE729952B6500FAA282 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIComponents.swift; sourceTree = "<group>"; };
+		D26293A129959156003A6D7A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		D2C688B62992F122001E9114 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
 		D2C688B82994DEA6001E9114 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D2D6600A29979347007D75C2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +88,7 @@
 				63AAAB0F2967EA2700775EC3 /* Info.plist */,
 				D2244DE929952BB300FAA282 /* LoginView */,
 				D2244DE229952ADB00FAA282 /* SignUpEmailView */,
+				D26293A029959136003A6D7A /* Model */,
 				D2244DEA29952BCD00FAA282 /* Extension */,
 				D2244DEC29952C4800FAA282 /* Constant */,
 				D2244DEB29952C1900FAA282 /* Info */,
@@ -99,10 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				D2244DE329952B2200FAA282 /* EmailViewController.swift */,
-				D2244DDE2995218F00FAA282 /* PhoneViewController.swift */,
-				D2244DE529952B4000FAA282 /* PWViewController.swift */,
 				D2244DE729952B6500FAA282 /* SignUpViewModel.swift */,
-				D2244DE02995224400FAA282 /* UserInputable.swift */,
 				D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */,
 			);
 			path = SignUpEmailView;
@@ -139,6 +137,16 @@
 				D2C688B62992F122001E9114 /* AppKeys.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		D26293A029959136003A6D7A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D26293A129959156003A6D7A /* Page.swift */,
+				D2244DE02995224400FAA282 /* UserInputable.swift */,
+				D2D6600A29979347007D75C2 /* Observable.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EB849275810F76188E8EF786 /* Frameworks */ = {
@@ -274,12 +282,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				D26293A229959156003A6D7A /* Page.swift in Sources */,
 				D2244DE429952B2200FAA282 /* EmailViewController.swift in Sources */,
 				D2C688B72992F122001E9114 /* AppKeys.swift in Sources */,
+				D2D6600B29979347007D75C2 /* Observable.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */,
-				D2244DE629952B4000FAA282 /* PWViewController.swift in Sources */,
-				D2244DDF2995218F00FAA282 /* PhoneViewController.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */,
 				D2244DE829952B6500FAA282 /* SignUpViewModel.swift in Sources */,

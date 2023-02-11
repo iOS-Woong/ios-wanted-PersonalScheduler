@@ -10,39 +10,26 @@ import UIKit
 class EmailViewController: UIViewController, UserInputable {
     
     enum Constant {
-        static let message =
-                            """
-                            안녕하세요!
-                            로그인에 사용할 이메일을 입력해주세요.
-                            """
-        static let placeholder = "workplayhard1@naver.com"
-        static let buttonTitle = "다음"
+        static let whiteSpace = ""
     }
     
     var signUpViewModel: SignUpViewModel
+    var page: Page
     
     var descriptionLabel: CustomLabel = {
         let label = CustomLabel()
-        
-        label.text = Constant.message
-        
         return label
     }()
     
     var userInformationInputTextFiled: CustomTextFiled = {
         let textField = CustomTextFiled()
-        
-        textField.placeholder = Constant.placeholder
-        textField.keyboardType = UIKeyboardType.emailAddress
-
         return textField
     }()
     
     var actionButton: CustomButton = {
         let button = CustomButton()
-        
-        button.setTitle(Constant.buttonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         
         return button
     }()
@@ -58,8 +45,9 @@ class EmailViewController: UIViewController, UserInputable {
         return stackView
     }()
     
-    required init(signUpviewModel: SignUpViewModel) {
-        self.signUpViewModel = SignUpViewModel()
+    required init(signUpviewModel: SignUpViewModel, page: Page) {
+        self.signUpViewModel = signUpviewModel
+        self.page = page
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -70,22 +58,40 @@ class EmailViewController: UIViewController, UserInputable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userInformationInputTextFiled.becomeFirstResponder()
-        setupNavigation()
         addObserver()
+        setupButton()
+        setupPageDescription()
+        setupNavigation()
         setupViews()
     }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupTextFieldBottomBorder(isTouched: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         removeObserver()
     }
     
+    private func bind() {
+        signUpViewModel.inputInformation?.bind(listener: { userInfo in
+            // firebase Create
+        })
+    }
+    
+    
+    private func setupPageDescription() {
+        descriptionLabel.text = page.messageDescription
+        userInformationInputTextFiled.placeholder = page.placeholderDescription
+        userInformationInputTextFiled.keyboardType = page.keyboardTypeDescription
+        actionButton.setTitle(page.buttonTitleDescription, for: .normal)
+    }
+    
     private func setupNavigation() {
+        title = Constant.whiteSpace
+        
         let closeAction = UIAction { [weak self] _ in
             self?.dismiss(animated: true)
         }
@@ -94,6 +100,28 @@ class EmailViewController: UIViewController, UserInputable {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: buttonImage,
                                                            primaryAction: closeAction)
         navigationController?.navigationBar.tintColor = .black
+    }
+    
+    private func setupButton() {
+        let nextAction = UIAction { [weak self] _ in
+            guard let self = self,
+                  let textField = self.userInformationInputTextFiled.text else { return }
+            self.signUpViewModel.loadUserInputInformation(page: self.page,
+                                                          textField: textField)
+            self.sceneConversion()
+        }
+        actionButton.addAction(nextAction, for: .touchUpInside)
+    }
+    
+    private func sceneConversion() {
+        let nextPageRawValue = self.page.rawValue + 1
+        if nextPageRawValue == 3 {
+            self.dismiss(animated: true)
+            return
+        }
+        let emailViewController = EmailViewController(signUpviewModel: self.signUpViewModel,
+                                                      page: Page(rawValue: nextPageRawValue) ?? .email)
+        self.navigationController?.pushViewController(emailViewController, animated: true)
     }
     
     private func setupTextFieldBottomBorder(isTouched: Bool) {
@@ -141,6 +169,7 @@ extension EmailViewController {
     
     @objc
     private func keyboardWillShow(_ notification: Notification) {
+        actionButton.isHidden = false
         handleButtonConstraint(notification, isAppearing: true)
     }
     
