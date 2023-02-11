@@ -9,6 +9,7 @@ pod 'KakaoSDKAuth'
 pod 'KakaoSDKUser'
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
 
   # Pods for PersonalScheduler
 
