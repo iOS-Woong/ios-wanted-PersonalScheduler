@@ -30,6 +30,17 @@ class CustomTextFiled: UITextField {
         self.borderStyle = .none
     }
     
+    func setupTextFieldBottomBorder() {
+        let border = CALayer()
+        border.frame = CGRect(x: 0,
+                              y: self.frame.size.height + 5,
+                              width: self.frame.width,
+                              height: 2)
+        border.backgroundColor = UIColor.facebookColor.cgColor
+        self.layer.addSublayer(border)
+    }
+    
+    
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

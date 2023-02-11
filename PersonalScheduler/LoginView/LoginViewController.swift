@@ -149,9 +149,9 @@ class LoginViewController: UIViewController {
         let emailLoginAction = UIAction { [weak self] _ in
             let signUpViewModel = SignUpViewModel()
             let emailViewController = EmailViewController(signUpviewModel: signUpViewModel,
-                                                          page: .email)
-            let navigationController = UINavigationController(rootViewController: emailViewController)
-            navigationController.modalPresentationStyle = .fullScreen
+                                                                      page: .email)
+                        let navigationController = UINavigationController(rootViewController: emailViewController)
+                        navigationController.modalPresentationStyle = .fullScreen
             self?.present(navigationController, animated: true)
         }
         emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)

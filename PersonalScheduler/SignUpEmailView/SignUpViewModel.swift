@@ -11,48 +11,60 @@ import FirebaseFirestore
 
 class SignUpViewModel {
     var inputInformation: Observable<InputUserInformation>?
-    
-    private var inputEmail = String()
-    private var inputPhoneNumber = String()
-    private var inputPassword = String()
-    
+    var inputUserInformation = InputUserInformation(email: "",
+                                                    phone: "",
+                                                    password: "")
+
     func loadUserInputInformation(page: Page,
                                   textField: String) {
         switch page {
         case .email:
-            inputEmail = textField
+            inputUserInformation.email = textField
         case .phone:
-            inputPhoneNumber = textField
+            inputUserInformation.phone = textField
         case .pw:
-            inputPassword = textField
-            makeUserInfoObject(email: inputEmail,
-                               phone: inputPhoneNumber,
-                               pw: inputPassword)
+            inputUserInformation.password = textField
+            makeUserInfoObservableObject()
         }
     }
     
-    private func makeUserInfoObject(email: String,
-                                    phone: String,
-                                    pw: String) -> InputUserInformation {
-        let inputUserInformation = InputUserInformation(inputEmail: email,
-                                                        inputPhoneNumber: phone,
-                                                        inputPassword: pw)
-        return inputUserInformation
-    }
-    
-    private func firebaseCreate() {
-        Auth.auth().createUser(withEmail: inputEmail, password: inputPassword) { result, error in
+    func firebaseCreate(completion: @escaping () -> Void) {
+        Auth.auth().createUser(withEmail: inputUserInformation.email,
+                               password: inputUserInformation.password) { [weak self] result, error in
+            guard let self = self else { return }
             if let error = error {
                 print(error.localizedDescription)
                 return
             }
-            //FireStore Create
+            let db = Firestore.firestore()
+            let userInfo = self.makeUserInfoData(phone: self.inputUserInformation.phone)
+
+            db.collection("users").addDocument(data: userInfo) { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                completion()
+            }
         }
+    }
+    
+    private func makeUserInfoObservableObject() {
+        let inputInfo = InputUserInformation(email: inputUserInformation.email,
+                                             phone: inputUserInformation.phone,
+                                             password: inputUserInformation.password)
+        inputInformation = .init(inputInfo)
+    }
+    
+    private func makeUserInfoData(phone: String) -> [String: Any] {
+        let userInfo = [
+            "phone":phone
+        ]
+        return userInfo
     }
 }
 
 struct InputUserInformation {
-    let inputEmail: String
-    let inputPhoneNumber: String
-    let inputPassword: String
+    var email: String
+    var phone: String
+    var password: String
 }

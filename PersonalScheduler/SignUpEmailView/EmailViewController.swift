@@ -45,6 +45,17 @@ class EmailViewController: UIViewController, UserInputable {
         return stackView
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        
+        indicator.center = self.view.center
+        indicator.style = .large
+        indicator.startAnimating()
+        indicator.isHidden = true
+        
+        return indicator
+    }()
+    
     required init(signUpviewModel: SignUpViewModel, page: Page) {
         self.signUpViewModel = signUpviewModel
         self.page = page
@@ -64,10 +75,10 @@ class EmailViewController: UIViewController, UserInputable {
         setupNavigation()
         setupViews()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupTextFieldBottomBorder(isTouched: true)
+        userInformationInputTextFiled.setupTextFieldBottomBorder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,11 +87,16 @@ class EmailViewController: UIViewController, UserInputable {
     }
     
     private func bind() {
-        signUpViewModel.inputInformation?.bind(listener: { userInfo in
-            // firebase Create
+        signUpViewModel.inputInformation?.bind(listener: { [weak self] _ in
+            guard let self = self else { return }
+
+            self.signUpViewModel.firebaseCreate  {
+                self.dismiss(animated: true) {
+                    self.activityIndicator.isHidden = true
+                }
+            }
         })
     }
-    
     
     private func setupPageDescription() {
         descriptionLabel.text = page.messageDescription
@@ -108,31 +124,26 @@ class EmailViewController: UIViewController, UserInputable {
                   let textField = self.userInformationInputTextFiled.text else { return }
             self.signUpViewModel.loadUserInputInformation(page: self.page,
                                                           textField: textField)
+            self.bindWhenPageIsPassword()
             self.sceneConversion()
         }
         actionButton.addAction(nextAction, for: .touchUpInside)
     }
     
-    private func sceneConversion() {
-        let nextPageRawValue = self.page.rawValue + 1
-        if nextPageRawValue == 3 {
-            self.dismiss(animated: true)
-            return
+    private func bindWhenPageIsPassword() {
+        if page == .pw {
+            self.activityIndicator.isHidden = false
+            bind()
         }
-        let emailViewController = EmailViewController(signUpviewModel: self.signUpViewModel,
-                                                      page: Page(rawValue: nextPageRawValue) ?? .email)
-        self.navigationController?.pushViewController(emailViewController, animated: true)
     }
     
-    private func setupTextFieldBottomBorder(isTouched: Bool) {
-        let border = CALayer()
-        border.frame = CGRect(x: 0,
-                              y: userInformationInputTextFiled.frame.size.height + 5,
-                              width: userInformationInputTextFiled.frame.width,
-                              height: 2)
-        let colorValue = isTouched ?  UIColor.facebookColor.cgColor : UIColor.lightGray.cgColor
-        border.backgroundColor = colorValue
-        userInformationInputTextFiled.layer.addSublayer(border)
+    private func sceneConversion() {
+        if page != .pw {
+            let nextPageRawValue = self.page.rawValue + 1
+            let emailViewController = EmailViewController(signUpviewModel: self.signUpViewModel,
+                                                          page: Page(rawValue: nextPageRawValue) ?? .email)
+            self.navigationController?.pushViewController(emailViewController, animated: true)
+        }
     }
     
     private func setupViews() {
@@ -140,8 +151,8 @@ class EmailViewController: UIViewController, UserInputable {
         view.backgroundColor = .white
         
         [descriptionLabel, userInformationInputTextFiled].forEach(labelAndTextFieldStackView.addArrangedSubview(_:))
-        [labelAndTextFieldStackView, actionButton].forEach(view.addSubview(_:))
-                
+        [labelAndTextFieldStackView, actionButton, activityIndicator].forEach(view.addSubview(_:))
+        
         let safeArea = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
