@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class LoginViewController: UIViewController {
     
@@ -50,9 +51,8 @@ class LoginViewController: UIViewController {
     let facebookLoginButton = {
         let button = UIButton()
         
-        button.setTitle("페이스북으로 시작하기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = .facebookColor
+        button.setTitle("페이스북으로 시작하기", for: .normal)
         
         return button
     }()
@@ -143,7 +143,10 @@ class LoginViewController: UIViewController {
         
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
-//            self?.loginViewModel.tokenCheck()
+            if let self = self {
+                self.loginViewModel.fbLogin(self)
+            }
+
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         

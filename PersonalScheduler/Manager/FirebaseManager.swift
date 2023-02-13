@@ -18,6 +18,7 @@ struct FirebaseManager {
                 print(error, "------create Error-------")
                 return
             }
+            // fetch를 위한 구문
             if let completion = completion {
                 completion()
             }

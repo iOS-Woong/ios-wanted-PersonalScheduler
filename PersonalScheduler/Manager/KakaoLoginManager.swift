@@ -61,9 +61,9 @@ struct KakaoLoginManager {
                 print(error)
             } else {
                 guard let email = user?.kakaoAccount?.email else { return }
-                let userid = "\(String(describing: user?.id))"
+                let userId = "\(String(describing: user?.id))"
                 // Firebase 생성구문
-                firebaseManager.create(email: email, pw: userid)
+                firebaseManager.create(email: email, pw: userId)
             }
         }
     }
