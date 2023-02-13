@@ -25,4 +25,14 @@ struct FirebaseManager {
         }
     }
     
+    func signIn(email: String, pw: String) {
+        Auth.auth().signIn(withEmail: email,
+                           password: pw) { user, error in
+            if user != nil {
+                print("firebase Login")
+            } else {
+                print("fail")
+            }
+        }
+    }
 }

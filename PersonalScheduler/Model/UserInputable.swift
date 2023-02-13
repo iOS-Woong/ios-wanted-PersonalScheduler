@@ -16,12 +16,3 @@ protocol UserInputable {
         
     init(signUpviewModel: SignUpViewModel, page: Page)
 }
-
-extension UserInputable {
-    
-    func nextTo() {
-        
-    }
-    
-    
-}

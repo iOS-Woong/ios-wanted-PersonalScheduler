@@ -15,6 +15,8 @@ class SignUpViewModel {
                                                     phone: "",
                                                     password: "")
 
+    private let firebaseManager = FirebaseManager()
+    
     func loadUserInputInformation(page: Page,
                                   textField: String) {
         switch page {
@@ -29,6 +31,9 @@ class SignUpViewModel {
     }
     
     // firebase 생성 구문 (Manager 함수로 처리하도록
+    
+    
+    
     func firebaseCreate(completion: @escaping () -> Void) {
         Auth.auth().createUser(withEmail: inputUserInformation.email,
                                password: inputUserInformation.password) { [weak self] result, error in
