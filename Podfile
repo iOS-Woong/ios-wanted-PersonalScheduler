@@ -10,6 +10,8 @@ pod 'KakaoSDKUser'
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'FacebookCore'
+pod 'FacebookLogin' 
 
   # Pods for PersonalScheduler
 
