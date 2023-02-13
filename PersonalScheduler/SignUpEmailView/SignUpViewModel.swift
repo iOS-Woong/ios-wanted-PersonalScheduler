@@ -28,6 +28,7 @@ class SignUpViewModel {
         }
     }
     
+    // firebase 생성 구문 (Manager 함수로 처리하도록
     func firebaseCreate(completion: @escaping () -> Void) {
         Auth.auth().createUser(withEmail: inputUserInformation.email,
                                password: inputUserInformation.password) { [weak self] result, error in
@@ -36,6 +37,8 @@ class SignUpViewModel {
                 print(error.localizedDescription)
                 return
             }
+            // 현재는 firestore로 저장하는 것으로 되어있지만,
+            // 이 구문이 firestore에서 값을 fetch해오는 것으로 되어야한다.
             let db = Firestore.firestore()
             let userInfo = self.makeUserInfoData(phone: self.inputUserInformation.phone)
 

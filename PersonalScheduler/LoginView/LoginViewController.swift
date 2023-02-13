@@ -143,6 +143,7 @@ class LoginViewController: UIViewController {
         
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
+//            self?.loginViewModel.tokenCheck()
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         
