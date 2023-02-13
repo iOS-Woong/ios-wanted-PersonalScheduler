@@ -7,6 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import FacebookCore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -27,10 +28,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let url = URLContexts.first?.url {
-            if (AuthApi.isKakaoTalkLoginUrl(url)) {
-                _ = AuthController.handleOpenUrl(url: url)
-            }
+        guard let url = URLContexts.first?.url else { return }
+        
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            _ = AuthController.handleOpenUrl(url: url)
         }
+        //FB
+        ApplicationDelegate.shared.application(UIApplication.shared,
+                                               open: url,
+                                               sourceApplication: nil,
+                                               annotation: [UIApplication.OpenURLOptionsKey.annotation])
     }
 }
