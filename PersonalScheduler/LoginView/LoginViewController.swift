@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class LoginViewController: UIViewController {
     
@@ -50,9 +51,8 @@ class LoginViewController: UIViewController {
     let facebookLoginButton = {
         let button = UIButton()
         
-        button.setTitle("페이스북으로 시작하기", for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
         button.backgroundColor = .facebookColor
+        button.setTitle("페이스북으로 시작하기", for: .normal)
         
         return button
     }()
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    let emailSignUpButton = {
+    let emailResisterButton = {
         let button = UIButton()
         
         button.setTitle("이메일로 가입하기", for: .normal)
@@ -105,8 +105,8 @@ class LoginViewController: UIViewController {
         
         return stackView
     }()
-
-
+    
+    
     let loginButtonStackView = {
         let stackView = UIStackView()
         
@@ -123,6 +123,7 @@ class LoginViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -143,19 +144,28 @@ class LoginViewController: UIViewController {
         
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
-//            self?.loginViewModel.tokenCheck()
+            if let self = self {
+                self.loginViewModel.fbLogin(self)
+            }
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         
-        let emailLoginAction = UIAction { [weak self] _ in
+        let emailResisterAction = UIAction { [weak self] _ in
             let signUpViewModel = SignUpViewModel()
-            let emailViewController = EmailViewController(signUpviewModel: signUpViewModel,
-                                                                      page: .email)
-                        let navigationController = UINavigationController(rootViewController: emailViewController)
-                        navigationController.modalPresentationStyle = .fullScreen
+            let emailViewController = ResisterEmailViewController(signUpviewModel: signUpViewModel,
+                                                          page: .email)
+            let navigationController = UINavigationController(rootViewController: emailViewController)
+            navigationController.modalPresentationStyle = .fullScreen
             self?.present(navigationController, animated: true)
         }
-        emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)
+        emailResisterButton.addAction(emailResisterAction, for: .touchUpInside)
+        
+        let emailLoginAction = UIAction { [weak self] _ in
+            let logInEmailViewModel = LoginEmailViewModel()
+            let logInEmailViewController = LoginEmailViewController(loginEmailViewModel: logInEmailViewModel,
+                                                                    emailLoginPage: .email)
+        }
+        
         
     }
     
@@ -165,7 +175,7 @@ class LoginViewController: UIViewController {
         let safeArea = view.safeAreaLayoutGuide
         
         [headLabel, subLabel].forEach(labelStackView.addArrangedSubview(_:))
-        [emailLoginButton ,emailFlagLabel ,emailSignUpButton].forEach(emailLoginButtonStackView.addArrangedSubview(_:))
+        [emailLoginButton ,emailFlagLabel ,emailResisterButton].forEach(emailLoginButtonStackView.addArrangedSubview(_:))
         [kakaoLoginButton, facebookLoginButton].forEach(loginButtonStackView.addArrangedSubview(_:))
         
         [labelStackView, loginButtonStackView, emailLoginButtonStackView].forEach(view.addSubview(_:))

@@ -18,10 +18,21 @@ struct FirebaseManager {
                 print(error, "------create Error-------")
                 return
             }
+            // fetch를 위한 구문
             if let completion = completion {
                 completion()
             }
         }
     }
     
+    func signIn(email: String, pw: String) {
+        Auth.auth().signIn(withEmail: email,
+                           password: pw) { user, error in
+            if user != nil {
+                print("firebase Login")
+            } else {
+                print("fail")
+            }
+        }
+    }
 }

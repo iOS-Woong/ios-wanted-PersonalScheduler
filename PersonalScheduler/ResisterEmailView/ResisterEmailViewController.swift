@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EmailViewController: UIViewController, UserInputable {
+class ResisterEmailViewController: UIViewController, UserInputable {
     
     enum Constant {
         static let whiteSpace = ""
@@ -140,7 +140,7 @@ class EmailViewController: UIViewController, UserInputable {
     private func sceneConversion() {
         if page != .pw {
             let nextPageRawValue = self.page.rawValue + 1
-            let emailViewController = EmailViewController(signUpviewModel: self.signUpViewModel,
+            let emailViewController = ResisterEmailViewController(signUpviewModel: self.signUpViewModel,
                                                           page: Page(rawValue: nextPageRawValue) ?? .email)
             self.navigationController?.pushViewController(emailViewController, animated: true)
         }
@@ -164,7 +164,7 @@ class EmailViewController: UIViewController, UserInputable {
 }
 
 // MARK: Notification
-extension EmailViewController {
+extension ResisterEmailViewController {
     private func addObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)),
