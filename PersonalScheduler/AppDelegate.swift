@@ -9,7 +9,7 @@ import UIKit
 import KakaoSDKCommon
 import KakaoSDKAuth
 import FirebaseCore
-import FacebookCore
+import FBSDKCoreKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

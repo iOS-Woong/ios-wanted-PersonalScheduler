@@ -19,6 +19,7 @@
 		D2244DEE29952D5D00FAA282 /* CustomUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */; };
 		D26293A229959156003A6D7A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26293A129959156003A6D7A /* Page.swift */; };
 		D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */; };
+		D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */; };
 		D2C688B72992F122001E9114 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B62992F122001E9114 /* AppKeys.swift */; };
 		D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B82994DEA6001E9114 /* LoginViewModel.swift */; };
 		D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */; };
@@ -46,6 +47,7 @@
 		D26293A129959156003A6D7A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D2C2CE3D299A460C0065B63F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
+		D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginManager.swift; sourceTree = "<group>"; };
 		D2C688B62992F122001E9114 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
 		D2C688B82994DEA6001E9114 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 			children = (
 				D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */,
 				D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */,
+				D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */,
 				D26293A229959156003A6D7A /* Page.swift in Sources */,
 				D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */,
 				D2244DE429952B2200FAA282 /* EmailViewController.swift in Sources */,

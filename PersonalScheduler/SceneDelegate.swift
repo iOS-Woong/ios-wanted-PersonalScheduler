@@ -7,7 +7,7 @@
 
 import UIKit
 import KakaoSDKAuth
-import FacebookCore
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
