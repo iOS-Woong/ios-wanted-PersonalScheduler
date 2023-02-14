@@ -79,7 +79,7 @@ class ResisterEmailViewController: UIViewController, UserInputable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        userInformationInputTextFiled.setupTextFieldBottomBorder()
+        userInformationInputTextFiled.setupTextFieldBottomBorder(mode: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

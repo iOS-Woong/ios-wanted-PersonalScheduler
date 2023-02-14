@@ -25,6 +25,18 @@ struct FirebaseManager {
         }
     }
     
+    func checkSignInableEmail(email: String, completion: @escaping () -> Void) {
+        Auth.auth().fetchSignInMethods(forEmail: email) { result, error in
+            if let error = error {
+                print(error)
+                print("----emailCheckError------")
+            }
+            if let _ = result?.first {
+                completion()
+            }
+        }
+    }
+    
     func signIn(email: String, pw: String) {
         Auth.auth().signIn(withEmail: email,
                            password: pw) { user, error in

@@ -27,6 +27,11 @@ class SignUpViewModel {
         }
     }
     
+    func signInableEmail(email: String, completion: @escaping () -> Void) {
+        firebaseManager.checkSignInableEmail(email: email, completion: completion)
+    }
+    
+    
     private func makeUserInfoObservableObject() {
         let inputInfo = InputUserInformation(email: inputUserInformation.email,
                                              password: inputUserInformation.password)
@@ -40,13 +45,6 @@ class SignUpViewModel {
         return userInfo
     }
 }
-
-struct InputUserInformation {
-    var email: String
-    var password: String
-}
-
-
 
 // firebase 생성 구문 (Manager 함수로 처리하도록
 

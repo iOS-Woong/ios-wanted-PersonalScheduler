@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 class LoginEmailViewController: UIViewController, UserInputable {
     
@@ -67,7 +69,6 @@ class LoginEmailViewController: UIViewController, UserInputable {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,7 @@ class LoginEmailViewController: UIViewController, UserInputable {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        userInformationInputTextFiled.setupTextFieldBottomBorder()
+        userInformationInputTextFiled.setupTextFieldBottomBorder(mode: true)
     }
 
     func bind() {
@@ -96,8 +97,12 @@ class LoginEmailViewController: UIViewController, UserInputable {
     
     func setupButton() {
         let nextAction = UIAction { [weak self] _ in
-            guard let self = self else { return }
-            self.sceneConversion()
+            guard let self = self,
+                  let inputText = self.userInformationInputTextFiled.text else { return }
+            self.signUpViewModel.signInableEmail(email: inputText) {
+                self.sceneConversion()
+            }
+            self.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
         }
         actionButton.addAction(nextAction, for: .touchUpInside)
     }
@@ -176,3 +181,6 @@ extension LoginEmailViewController {
         ])
     }
 }
+
+// 아이디를 쓰고, 다음을 누르면 일치하는 아이디가 있는지 체크한다.
+
