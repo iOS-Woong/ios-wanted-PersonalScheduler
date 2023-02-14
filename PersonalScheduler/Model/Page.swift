@@ -7,9 +7,9 @@
 
 import UIKit
 
-enum Page: Int {
-    case email = 0
-    case pw = 2
+enum Page {
+    case email
+    case pw
 }
 
 extension Page {
@@ -22,6 +22,15 @@ extension Page {
                     """
         case .pw:
             return "로그인에 사용할 비밀번호를 입력해주세요."
+        }
+    }
+    
+    var loginMessageDescription: String {
+        switch self {
+        case .email:
+            return "가입하신 이메일 정보를 입력해주세요."
+        case .pw:
+            return "비밀번호를 입력해주세요."
         }
     }
     
@@ -52,4 +61,12 @@ extension Page {
         }
     }
     
+    var loginButtonTitleDescription: String {
+        switch self {
+        case .email:
+            return "다음"
+        case .pw:
+            return "로그인"
+        }
+    }
 }

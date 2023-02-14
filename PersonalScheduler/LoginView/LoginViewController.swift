@@ -161,12 +161,14 @@ class LoginViewController: UIViewController {
         emailResisterButton.addAction(emailResisterAction, for: .touchUpInside)
         
         let emailLoginAction = UIAction { [weak self] _ in
-            let logInEmailViewModel = LoginEmailViewModel()
-            let logInEmailViewController = LoginEmailViewController(loginEmailViewModel: logInEmailViewModel,
-                                                                    emailLoginPage: .email)
+            let signUpViewModel = SignUpViewModel()
+            let logInEmailViewController = LoginEmailViewController(signUpviewModel: signUpViewModel,
+                                                                    page: .email)
+            let navigationController = UINavigationController(rootViewController: logInEmailViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self?.present(navigationController, animated: true)
         }
-        
-        
+        emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)
     }
     
     private func setupViews() {

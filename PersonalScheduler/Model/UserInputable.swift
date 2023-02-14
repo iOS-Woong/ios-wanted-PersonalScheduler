@@ -13,6 +13,12 @@ protocol UserInputable {
     var descriptionLabel: CustomLabel { get }
     var userInformationInputTextFiled: CustomTextFiled { get }
     var actionButton: CustomButton { get }
-        
+    var labelAndTextFieldStackView: UIStackView { get }
+    
+    func bind()
+    func addObserver()
+    func removeObserver()
+    func keyboardWillShow(_ notification: Notification)
+    
     init(signUpviewModel: SignUpViewModel, page: Page)
 }

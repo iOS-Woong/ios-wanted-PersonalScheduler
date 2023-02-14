@@ -27,10 +27,31 @@ class SignUpViewModel {
         }
     }
     
-    // firebase 생성 구문 (Manager 함수로 처리하도록
+    private func makeUserInfoObservableObject() {
+        let inputInfo = InputUserInformation(email: inputUserInformation.email,
+                                             password: inputUserInformation.password)
+        inputInformation = .init(inputInfo)
+    }
     
-    
-    
+    private func makeUserInfoData(phone: String) -> [String: Any] {
+        let userInfo = [
+            "phone":phone
+        ]
+        return userInfo
+    }
+}
+
+struct InputUserInformation {
+    var email: String
+    var password: String
+}
+
+
+
+// firebase 생성 구문 (Manager 함수로 처리하도록
+
+
+
 //    func firebaseCreate(completion: @escaping () -> Void) {
 //        Auth.auth().createUser(withEmail: inputUserInformation.email,
 //                               password: inputUserInformation.password) { [weak self] result, error in
@@ -52,22 +73,3 @@ class SignUpViewModel {
 //            }
 //        }
 //    }
-    
-    private func makeUserInfoObservableObject() {
-        let inputInfo = InputUserInformation(email: inputUserInformation.email,
-                                             password: inputUserInformation.password)
-        inputInformation = .init(inputInfo)
-    }
-    
-    private func makeUserInfoData(phone: String) -> [String: Any] {
-        let userInfo = [
-            "phone":phone
-        ]
-        return userInfo
-    }
-}
-
-struct InputUserInformation {
-    var email: String
-    var password: String
-}

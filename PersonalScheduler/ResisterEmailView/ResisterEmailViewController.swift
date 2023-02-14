@@ -28,13 +28,14 @@ class ResisterEmailViewController: UIViewController, UserInputable {
     
     var actionButton: CustomButton = {
         let button = CustomButton()
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.isHidden = true
         
         return button
     }()
     
-    let labelAndTextFieldStackView: UIStackView = {
+    var labelAndTextFieldStackView: UIStackView = {
         let stackView = UIStackView()
         
         stackView.axis = .vertical
@@ -86,7 +87,7 @@ class ResisterEmailViewController: UIViewController, UserInputable {
         removeObserver()
     }
     
-    private func bind() {
+    func bind() {
         signUpViewModel.inputInformation?.bind(listener: { [weak self] _ in
             guard let self = self else { return }
 
@@ -164,26 +165,26 @@ class ResisterEmailViewController: UIViewController, UserInputable {
 
 // MARK: Notification
 extension ResisterEmailViewController {
-    private func addObserver() {
+    func addObserver() {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification,
                                                object: nil)
     }
     
-    private func removeObserver() {
+    func removeObserver() {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillShowNotification,
                                                   object: nil)
     }
     
     @objc
-    private func keyboardWillShow(_ notification: Notification) {
+    func keyboardWillShow(_ notification: Notification) {
         actionButton.isHidden = false
         handleButtonConstraint(notification, isAppearing: true)
     }
     
-    private func handleButtonConstraint(_ notification: Notification, isAppearing: Bool) {
+    func handleButtonConstraint(_ notification: Notification, isAppearing: Bool) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey]
                                   as? NSValue)?.cgRectValue else { return }
         let keyboardHeight = keyboardSize.height
