@@ -56,8 +56,8 @@ class ResisterEmailViewController: UIViewController, UserInputable {
         return indicator
     }()
     
-    required init(signUpviewModel: SignUpViewModel, page: Page) {
-        self.signUpViewModel = signUpviewModel
+    required init(signUpviewModel signUpViewModel: SignUpViewModel, page: Page) {
+        self.signUpViewModel = signUpViewModel
         self.page = page
         super.init(nibName: nil, bundle: nil)
     }
@@ -90,11 +90,11 @@ class ResisterEmailViewController: UIViewController, UserInputable {
         signUpViewModel.inputInformation?.bind(listener: { [weak self] _ in
             guard let self = self else { return }
 
-            self.signUpViewModel.firebaseCreate  {
-                self.dismiss(animated: true) {
-                    self.activityIndicator.isHidden = true
-                }
-            }
+//            self.signUpViewModel.firebaseCreate  {
+//                self.dismiss(animated: true) {
+//                    self.activityIndicator.isHidden = true
+//                }
+//            }
         })
     }
     
@@ -139,9 +139,8 @@ class ResisterEmailViewController: UIViewController, UserInputable {
     
     private func sceneConversion() {
         if page != .pw {
-            let nextPageRawValue = self.page.rawValue + 1
             let emailViewController = ResisterEmailViewController(signUpviewModel: self.signUpViewModel,
-                                                          page: Page(rawValue: nextPageRawValue) ?? .email)
+                                                                  page: .pw)
             self.navigationController?.pushViewController(emailViewController, animated: true)
         }
     }
