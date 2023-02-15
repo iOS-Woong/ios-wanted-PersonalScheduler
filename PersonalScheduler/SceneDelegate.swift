@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import KakaoSDKAuth
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -15,7 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                willConnectTo session: UISceneSession,
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let loginViewController = LoginViewController()
+        let loginViewModel = LoginViewModel()
+        let loginViewController = LoginViewController(loginViewModel: loginViewModel)
         let navigationController = UINavigationController(rootViewController: loginViewController)
         
         window = UIWindow(windowScene: windowScene)
@@ -23,5 +26,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else { return }
+        
+        if (AuthApi.isKakaoTalkLoginUrl(url)) {
+            _ = AuthController.handleOpenUrl(url: url)
+        }
+        //FB
+        ApplicationDelegate.shared.application(UIApplication.shared,
+                                               open: url,
+                                               sourceApplication: nil,
+                                               annotation: [UIApplication.OpenURLOptionsKey.annotation])
+    }
 }
-
