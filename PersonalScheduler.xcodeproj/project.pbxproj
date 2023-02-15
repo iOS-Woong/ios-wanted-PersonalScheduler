@@ -27,6 +27,10 @@
 		D2CA24E5299B9B93006CF7CB /* InputUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */; };
 		D2CA24E8299CF760006CF7CB /* BoardingRecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24E7299CF760006CF7CB /* BoardingRecordViewModel.swift */; };
 		D2CA24EA299CF774006CF7CB /* BoardingRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24E9299CF774006CF7CB /* BoardingRecordViewController.swift */; };
+		D2CA24EC299CFB5E006CF7CB /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24EB299CFB5E006CF7CB /* Section.swift */; };
+		D2CA24EE299CFB79006CF7CB /* BoardingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24ED299CFB79006CF7CB /* BoardingHistory.swift */; };
+		D2CA24F0299CFD83006CF7CB /* BoardingRecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24EF299CFD83006CF7CB /* BoardingRecordTableViewCell.swift */; };
+		D2CA24F2299CFDFC006CF7CB /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */; };
 		D2D6600B29979347007D75C2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6600A29979347007D75C2 /* Observable.swift */; };
 		D2EE1FCC2999286E00BA5541 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */; };
 		DCCD84ED4350F8AF6C38ACEE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A719DF145223ACD47F2AB3 /* Pods_PersonalScheduler.framework */; };
@@ -59,6 +63,10 @@
 		D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserInformation.swift; sourceTree = "<group>"; };
 		D2CA24E7299CF760006CF7CB /* BoardingRecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingRecordViewModel.swift; sourceTree = "<group>"; };
 		D2CA24E9299CF774006CF7CB /* BoardingRecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingRecordViewController.swift; sourceTree = "<group>"; };
+		D2CA24EB299CFB5E006CF7CB /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		D2CA24ED299CFB79006CF7CB /* BoardingHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingHistory.swift; sourceTree = "<group>"; };
+		D2CA24EF299CFD83006CF7CB /* BoardingRecordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingRecordTableViewCell.swift; sourceTree = "<group>"; };
+		D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D2D6600A29979347007D75C2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,6 +173,9 @@
 				D2244DE02995224400FAA282 /* UserInputable.swift */,
 				D2D6600A29979347007D75C2 /* Observable.swift */,
 				D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */,
+				D2CA24EB299CFB5E006CF7CB /* Section.swift */,
+				D2CA24ED299CFB79006CF7CB /* BoardingHistory.swift */,
+				D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +193,7 @@
 			children = (
 				D2CA24E7299CF760006CF7CB /* BoardingRecordViewModel.swift */,
 				D2CA24E9299CF774006CF7CB /* BoardingRecordViewController.swift */,
+				D2CA24EF299CFD83006CF7CB /* BoardingRecordTableViewCell.swift */,
 			);
 			path = BoardingRecordView;
 			sourceTree = "<group>";
@@ -330,11 +342,14 @@
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				D2CA24E8299CF760006CF7CB /* BoardingRecordViewModel.swift in Sources */,
+				D2CA24EE299CFB79006CF7CB /* BoardingHistory.swift in Sources */,
 				D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */,
 				D26293A229959156003A6D7A /* Page.swift in Sources */,
 				D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */,
+				D2CA24EC299CFB5E006CF7CB /* Section.swift in Sources */,
 				D2244DE429952B2200FAA282 /* ResisterEmailViewController.swift in Sources */,
 				D2EE1FCC2999286E00BA5541 /* KakaoLoginManager.swift in Sources */,
+				D2CA24F2299CFDFC006CF7CB /* ReusableView.swift in Sources */,
 				D2C2CE46299ADFD80065B63F /* LoginEmailViewController.swift in Sources */,
 				D2CA24EA299CF774006CF7CB /* BoardingRecordViewController.swift in Sources */,
 				D2C688B72992F122001E9114 /* AppKeys.swift in Sources */,
@@ -344,6 +359,7 @@
 				D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
 				D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */,
+				D2CA24F0299CFD83006CF7CB /* BoardingRecordTableViewCell.swift in Sources */,
 				D2244DE829952B6500FAA282 /* ResisterEmailViewModel.swift in Sources */,
 				D2244DEE29952D5D00FAA282 /* CustomUIComponents.swift in Sources */,
 				D2244DE12995224400FAA282 /* UserInputable.swift in Sources */,
