@@ -20,11 +20,11 @@
 		D26293A229959156003A6D7A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26293A129959156003A6D7A /* Page.swift */; };
 		D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */; };
 		D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */; };
-		D2C2CE44299ADF6B0065B63F /* LoginEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE43299ADF6B0065B63F /* LoginEmailViewModel.swift */; };
 		D2C2CE46299ADFD80065B63F /* LoginEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE45299ADFD80065B63F /* LoginEmailViewController.swift */; };
 		D2C688B72992F122001E9114 /* AppKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B62992F122001E9114 /* AppKeys.swift */; };
 		D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688B82994DEA6001E9114 /* LoginViewModel.swift */; };
 		D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */; };
+		D2CA24E5299B9B93006CF7CB /* InputUserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */; };
 		D2D6600B29979347007D75C2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6600A29979347007D75C2 /* Observable.swift */; };
 		D2EE1FCC2999286E00BA5541 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */; };
 		DCCD84ED4350F8AF6C38ACEE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A719DF145223ACD47F2AB3 /* Pods_PersonalScheduler.framework */; };
@@ -50,11 +50,11 @@
 		D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D2C2CE3D299A460C0065B63F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
 		D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBLoginManager.swift; sourceTree = "<group>"; };
-		D2C2CE43299ADF6B0065B63F /* LoginEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailViewModel.swift; sourceTree = "<group>"; };
 		D2C2CE45299ADFD80065B63F /* LoginEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginEmailViewController.swift; sourceTree = "<group>"; };
 		D2C688B62992F122001E9114 /* AppKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeys.swift; sourceTree = "<group>"; };
 		D2C688B82994DEA6001E9114 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D2C688BA2994F6A1001E9114 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputUserInformation.swift; sourceTree = "<group>"; };
 		D2D6600A29979347007D75C2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +159,7 @@
 				D26293A129959156003A6D7A /* Page.swift */,
 				D2244DE02995224400FAA282 /* UserInputable.swift */,
 				D2D6600A29979347007D75C2 /* Observable.swift */,
+				D2CA24E4299B9B93006CF7CB /* InputUserInformation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -167,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				D2C2CE45299ADFD80065B63F /* LoginEmailViewController.swift */,
-				D2C2CE43299ADF6B0065B63F /* LoginEmailViewModel.swift */,
 			);
 			path = LoginEmailView;
 			sourceTree = "<group>";
@@ -322,11 +322,11 @@
 				D2EE1FCC2999286E00BA5541 /* KakaoLoginManager.swift in Sources */,
 				D2C2CE46299ADFD80065B63F /* LoginEmailViewController.swift in Sources */,
 				D2C688B72992F122001E9114 /* AppKeys.swift in Sources */,
+				D2CA24E5299B9B93006CF7CB /* InputUserInformation.swift in Sources */,
 				D2D6600B29979347007D75C2 /* Observable.swift in Sources */,
 				63AAAB022967EA2600775EC3 /* AppDelegate.swift in Sources */,
 				D2C688B92994DEA6001E9114 /* LoginViewModel.swift in Sources */,
 				63AAAB042967EA2600775EC3 /* SceneDelegate.swift in Sources */,
-				D2C2CE44299ADF6B0065B63F /* LoginEmailViewModel.swift in Sources */,
 				D2C688BB2994F6A1001E9114 /* UIColor+Extension.swift in Sources */,
 				D2244DE829952B6500FAA282 /* ResisterEmailViewModel.swift in Sources */,
 				D2244DEE29952D5D00FAA282 /* CustomUIComponents.swift in Sources */,

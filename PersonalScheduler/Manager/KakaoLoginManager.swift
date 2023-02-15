@@ -15,16 +15,16 @@ struct KakaoLoginManager {
     let firebaseManager = FirebaseManager()
     
     // 카카오톡 간편로그인의 실행 가능여부를 확인 -> 로그인
-    func checkLoginEnabledAndLogin() {
+    func checkLoginEnabledAndLogin(completion: @escaping (Result<User, Error>) -> Void) {
         if (UserApi.isKakaoTalkLoginAvailable()) {
-            logInWithUserApplication()
+            logInWithUserApplication(completion: completion)
         } else {
-            logInWithUserAccount()
+            logInWithUserAccount(completion: completion)
         }
     }
     
     // 카톡(앱)으로 로그인
-    private func logInWithUserApplication() {
+    private func logInWithUserApplication(completion: @escaping (Result<User, Error>) -> Void) {
         UserApi.shared.loginWithKakaoTalk {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -34,13 +34,13 @@ struct KakaoLoginManager {
                 
                 //do something
                 _ = oauthToken
-                setUserInfo()
+                setUserInfo(completion: completion)
             }
         }
     }
     
     // 카톡(계정)으로 로그인
-    private func logInWithUserAccount() {
+    private func logInWithUserAccount(completion: @escaping (Result<User, Error>) -> Void) {
         UserApi.shared.loginWithKakaoAccount {(oauthToken, error) in
             if let error = error {
                 print(error)
@@ -50,20 +50,18 @@ struct KakaoLoginManager {
                 
                 //do something
                 _ = oauthToken
-                setUserInfo()
+                setUserInfo(completion: completion)
             }
         }
     }
         
-    private func setUserInfo() {
+    private func setUserInfo(completion: @escaping (Result<User, Error>) -> Void) {
         UserApi.shared.me { user, error in
             if let error = error {
-                print(error)
+                completion(.failure(error))
             } else {
-                guard let email = user?.kakaoAccount?.email else { return }
-                let userId = "\(String(describing: user?.id))"
-                // Firebase 생성구문
-                firebaseManager.create(email: email, pw: userId)
+                guard let user = user else { return }
+                completion(.success(user))
             }
         }
     }

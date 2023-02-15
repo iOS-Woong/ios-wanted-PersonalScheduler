@@ -8,11 +8,17 @@
 import UIKit
 
 protocol UserInputable {
-    var signUpViewModel: SignUpViewModel { get }
+    var signUpViewModel: ResisterEmailViewModel { get }
     var page: Page { get }
     var descriptionLabel: CustomLabel { get }
     var userInformationInputTextFiled: CustomTextFiled { get }
     var actionButton: CustomButton { get }
-        
-    init(signUpviewModel: SignUpViewModel, page: Page)
+    var labelAndTextFieldStackView: UIStackView { get }
+    
+    func bind()
+    func addObserver()
+    func removeObserver()
+    func keyboardWillShow(_ notification: Notification)
+    
+    init(signUpviewModel: ResisterEmailViewModel, page: Page)
 }

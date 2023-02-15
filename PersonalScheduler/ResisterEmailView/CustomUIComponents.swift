@@ -30,13 +30,14 @@ class CustomTextFiled: UITextField {
         self.borderStyle = .none
     }
     
-    func setupTextFieldBottomBorder() {
+    func setupTextFieldBottomBorder(mode: Bool) {
+        let borderColor: UIColor = mode ? .facebookColor : .systemRed
         let border = CALayer()
         border.frame = CGRect(x: 0,
                               y: self.frame.size.height + 5,
                               width: self.frame.width,
                               height: 2)
-        border.backgroundColor = UIColor.facebookColor.cgColor
+        border.backgroundColor = borderColor.cgColor
         self.layer.addSublayer(border)
     }
     

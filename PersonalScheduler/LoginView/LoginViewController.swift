@@ -138,20 +138,36 @@ class LoginViewController: UIViewController {
     private func setupButton() {
         let kakaoLoginAction = UIAction { [weak self] _ in
             //TODO: 카카오 로그인
-            self?.loginViewModel.kakaoLogin()
+            self?.loginViewModel.kakaoLogin(completion: { result in
+                switch result {
+                case .success(_):
+                    // 프로젝트로 넘기기
+                    print("WOW KAKAO Login")
+                case .failure(_):
+                    //
+                    print("WOW KAKAO Can not Login.")
+                }
+            })
         }
         kakaoLoginButton.addAction(kakaoLoginAction, for: .touchUpInside)
         
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
             if let self = self {
-                self.loginViewModel.fbLogin(self)
+                self.loginViewModel.fbLogin(self) { result in
+                    switch result {
+                    case .success(_):
+                        print("WOW KAKAO Login")
+                    case .failure(_):
+                        print("WOW FB Can not Login")
+                    }
+                }
             }
         }
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         
         let emailResisterAction = UIAction { [weak self] _ in
-            let signUpViewModel = SignUpViewModel()
+            let signUpViewModel = ResisterEmailViewModel()
             let emailViewController = ResisterEmailViewController(signUpviewModel: signUpViewModel,
                                                           page: .email)
             let navigationController = UINavigationController(rootViewController: emailViewController)
@@ -161,12 +177,14 @@ class LoginViewController: UIViewController {
         emailResisterButton.addAction(emailResisterAction, for: .touchUpInside)
         
         let emailLoginAction = UIAction { [weak self] _ in
-            let logInEmailViewModel = LoginEmailViewModel()
-            let logInEmailViewController = LoginEmailViewController(loginEmailViewModel: logInEmailViewModel,
-                                                                    emailLoginPage: .email)
+            let signUpViewModel = ResisterEmailViewModel()
+            let logInEmailViewController = LoginEmailViewController(signUpviewModel: signUpViewModel,
+                                                                    page: .email)
+            let navigationController = UINavigationController(rootViewController: logInEmailViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self?.present(navigationController, animated: true)
         }
-        
-        
+        emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)
     }
     
     private func setupViews() {
