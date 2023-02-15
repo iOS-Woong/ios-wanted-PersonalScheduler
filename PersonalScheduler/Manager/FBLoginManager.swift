@@ -34,7 +34,7 @@ struct FBLoginManager {
             if let result = result as? [String: String], error == nil {
                 guard let email: String = result["email"],
                       let userId: String = result["id"] else { return }
-                firebaseManager.create(email: email, pw: userId)
+//                firebaseManager.create(email: email, pw: userId)
             }
         }
     }

@@ -11,16 +11,14 @@ import FirebaseFirestore
 
 struct FirebaseManager {
     
-    func create(email: String, pw: String, completion: (() -> Void)? = nil) {
+    func create(email: String, pw: String, completion: @escaping ((Result<AuthDataResult, Error>) -> Void)) {
         Auth.auth().createUser(withEmail: email,
-                               password: pw) { _, error in
+                               password: pw) { result, error in
             if let error = error {
-                print(error, "------create Error-------")
-                return
-            }
-            // fetch를 위한 구문
-            if let completion = completion {
-                completion()
+                completion(.failure(error))
+            } else {
+                guard let result = result else { return }
+                completion(.success(result))
             }
         }
     }
@@ -37,13 +35,18 @@ struct FirebaseManager {
         }
     }
     
-    func signIn(email: String, pw: String) {
+    func signIn(email: String,
+                pw: String,
+                completion: @escaping (Result<AuthDataResult, Error>) -> Void) {
         Auth.auth().signIn(withEmail: email,
-                           password: pw) { user, error in
-            if user != nil {
-                print("firebase Login")
+                           password: pw) { result, error in
+            if let error = error {
+                print("로긴 실패")
+                completion(.failure(error))
             } else {
-                print("fail")
+                guard let result = result else { return }
+                print("로긴 성공")
+                completion(.success(result))
             }
         }
     }

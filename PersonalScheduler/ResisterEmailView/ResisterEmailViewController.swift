@@ -13,7 +13,7 @@ class ResisterEmailViewController: UIViewController, UserInputable {
         static let whiteSpace = ""
     }
     
-    var signUpViewModel: SignUpViewModel
+    var signUpViewModel: ResisterEmailViewModel
     var page: Page
     
     var descriptionLabel: CustomLabel = {
@@ -57,7 +57,7 @@ class ResisterEmailViewController: UIViewController, UserInputable {
         return indicator
     }()
     
-    required init(signUpviewModel signUpViewModel: SignUpViewModel, page: Page) {
+    required init(signUpviewModel signUpViewModel: ResisterEmailViewModel, page: Page) {
         self.signUpViewModel = signUpViewModel
         self.page = page
         super.init(nibName: nil, bundle: nil)
@@ -88,14 +88,18 @@ class ResisterEmailViewController: UIViewController, UserInputable {
     }
     
     func bind() {
-        signUpViewModel.inputInformation?.bind(listener: { [weak self] _ in
-            guard let self = self else { return }
-
-//            self.signUpViewModel.firebaseCreate  {
-//                self.dismiss(animated: true) {
-//                    self.activityIndicator.isHidden = true
-//                }
-//            }
+        signUpViewModel.inputInformation?.bind(listener: { userInfo in
+            self.signUpViewModel.signUp(email: userInfo.email, pw: userInfo.password) { [weak self] result in
+                switch result {
+                case .success(_):
+                    self?.dismiss(animated: true) {
+                        self?.activityIndicator.isHidden = true
+                    }
+                case .failure(_):
+                    self?.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
+                    self?.activityIndicator.isHidden = true
+                }
+            }
         })
     }
     

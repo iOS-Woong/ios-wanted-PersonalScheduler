@@ -15,7 +15,7 @@ class LoginEmailViewController: UIViewController, UserInputable {
         static let whiteSpace = ""
     }
     
-    var signUpViewModel: SignUpViewModel
+    var signUpViewModel: ResisterEmailViewModel
     var page: Page
     
     var descriptionLabel: CustomLabel = {
@@ -59,7 +59,7 @@ class LoginEmailViewController: UIViewController, UserInputable {
         return indicator
     }()
 
-    required init(signUpviewModel: SignUpViewModel, page: Page) {
+    required init(signUpviewModel: ResisterEmailViewModel, page: Page) {
         self.signUpViewModel = signUpviewModel
         self.page = page
         super.init(nibName: nil, bundle: nil)
@@ -77,16 +77,33 @@ class LoginEmailViewController: UIViewController, UserInputable {
         setupPageDescription()
         setupNavigation()
         setupViews()
+        // bind()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         userInformationInputTextFiled.setupTextFieldBottomBorder(mode: true)
     }
-
+    
     func bind() {
-        //
+        signUpViewModel.inputInformation?.bind(listener: { [weak self] _ in
+            guard let self = self,
+                  let inputInfo = self.signUpViewModel.inputInformation?.value else { return }
+
+            self.signUpViewModel.signIn(email: inputInfo.email, pw: inputInfo.password) { [weak self] result in
+                switch result {
+                case .success(_):
+                    self?.dismiss(animated: true) {
+                        self?.activityIndicator.isHidden = true
+                    }
+                case .failure(_):
+                    self?.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
+                    self?.activityIndicator.isHidden = true
+                }
+            }
+        })
     }
+    
     
     private func setupPageDescription() {
         descriptionLabel.text = page.loginMessageDescription
@@ -97,14 +114,28 @@ class LoginEmailViewController: UIViewController, UserInputable {
     
     func setupButton() {
         let nextAction = UIAction { [weak self] _ in
-            guard let self = self,
-                  let inputText = self.userInformationInputTextFiled.text else { return }
-            self.signUpViewModel.signInableEmail(email: inputText) {
-                self.sceneConversion()
-            }
-            self.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
+            guard let self = self else { return }
+            self.checkSignInableLogin()
+            self.activityIndicator.isHidden = false
+//            self.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
         }
         actionButton.addAction(nextAction, for: .touchUpInside)
+    }
+    
+    private func checkSignInableLogin() {
+        guard let inputText = userInformationInputTextFiled.text else { return }
+        switch page {
+        case .email:
+            signUpViewModel.signInableEmail(email: inputText) {
+                self.signUpViewModel.loadUserInputInformation(page: self.page,
+                                                              textField: inputText)
+                self.sceneConversion()
+            }
+        case .pw:
+            signUpViewModel.loadUserInputInformation(page: page,
+                                                     textField: inputText)
+            bind()
+        }
     }
     
     private func sceneConversion() {

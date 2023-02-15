@@ -151,7 +151,7 @@ class LoginViewController: UIViewController {
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         
         let emailResisterAction = UIAction { [weak self] _ in
-            let signUpViewModel = SignUpViewModel()
+            let signUpViewModel = ResisterEmailViewModel()
             let emailViewController = ResisterEmailViewController(signUpviewModel: signUpViewModel,
                                                           page: .email)
             let navigationController = UINavigationController(rootViewController: emailViewController)
@@ -161,7 +161,7 @@ class LoginViewController: UIViewController {
         emailResisterButton.addAction(emailResisterAction, for: .touchUpInside)
         
         let emailLoginAction = UIAction { [weak self] _ in
-            let signUpViewModel = SignUpViewModel()
+            let signUpViewModel = ResisterEmailViewModel()
             let logInEmailViewController = LoginEmailViewController(signUpviewModel: signUpViewModel,
                                                                     page: .email)
             let navigationController = UINavigationController(rootViewController: logInEmailViewController)

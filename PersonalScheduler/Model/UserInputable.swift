@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserInputable {
-    var signUpViewModel: SignUpViewModel { get }
+    var signUpViewModel: ResisterEmailViewModel { get }
     var page: Page { get }
     var descriptionLabel: CustomLabel { get }
     var userInformationInputTextFiled: CustomTextFiled { get }
@@ -20,5 +20,5 @@ protocol UserInputable {
     func removeObserver()
     func keyboardWillShow(_ notification: Notification)
     
-    init(signUpviewModel: SignUpViewModel, page: Page)
+    init(signUpviewModel: ResisterEmailViewModel, page: Page)
 }
