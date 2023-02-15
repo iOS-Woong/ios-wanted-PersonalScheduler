@@ -13,7 +13,7 @@ struct FBLoginManager {
 
     private let firebaseManager = FirebaseManager()
     
-    func login(from: UIViewController) {
+    func login(from: UIViewController, completion: @escaping (Result<(String, String), Error>) -> Void) {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["email"],
                            from: from) { result, error in
@@ -22,19 +22,22 @@ struct FBLoginManager {
             } else if let result = result, result.isCancelled {
               print("Cancelled")
             } else {
-                print("logged In")
-                setUserInfo()
+                setUserInfo(completion: completion)
             }
         }
     }
     
-    private func setUserInfo() {
+    private func setUserInfo(completion: @escaping (Result<(String, String), Error>) -> Void) {
         let request = GraphRequest(graphPath: "me", parameters: ["fields" : "email"])
         request.start { _, result, error in
-            if let result = result as? [String: String], error == nil {
+            if let error = error {
+                completion(.failure(error))
+            }
+            if let result = result as? [String: String]{
                 guard let email: String = result["email"],
                       let userId: String = result["id"] else { return }
-//                firebaseManager.create(email: email, pw: userId)
+                let result = (email: email, id: userId)
+                completion(.success(result))
             }
         }
     }
