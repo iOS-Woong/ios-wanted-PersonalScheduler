@@ -17,6 +17,8 @@
 		D2244DE429952B2200FAA282 /* ResisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE329952B2200FAA282 /* ResisterEmailViewController.swift */; };
 		D2244DE829952B6500FAA282 /* ResisterEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DE729952B6500FAA282 /* ResisterEmailViewModel.swift */; };
 		D2244DEE29952D5D00FAA282 /* CustomUIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */; };
+		D241E2DD299F298500BF7709 /* BoardingAllocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241E2DC299F298500BF7709 /* BoardingAllocationViewController.swift */; };
+		D241E2DF299F29AB00BF7709 /* BoardingAllocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D241E2DE299F29AB00BF7709 /* BoardingAllocationViewModel.swift */; };
 		D26293A229959156003A6D7A /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26293A129959156003A6D7A /* Page.swift */; };
 		D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */; };
 		D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2CE3E299A49C70065B63F /* FBLoginManager.swift */; };
@@ -52,6 +54,8 @@
 		D2244DE329952B2200FAA282 /* ResisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterEmailViewController.swift; sourceTree = "<group>"; };
 		D2244DE729952B6500FAA282 /* ResisterEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResisterEmailViewModel.swift; sourceTree = "<group>"; };
 		D2244DED29952D5D00FAA282 /* CustomUIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIComponents.swift; sourceTree = "<group>"; };
+		D241E2DC299F298500BF7709 /* BoardingAllocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingAllocationViewController.swift; sourceTree = "<group>"; };
+		D241E2DE299F29AB00BF7709 /* BoardingAllocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingAllocationViewModel.swift; sourceTree = "<group>"; };
 		D26293A129959156003A6D7A /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		D2C2CE3B299A3A040065B63F /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		D2C2CE3D299A460C0065B63F /* PersonalScheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PersonalScheduler.entitlements; sourceTree = "<group>"; };
@@ -115,6 +119,7 @@
 				D2C2CE40299ADEB80065B63F /* LoginEmailView */,
 				D2244DE229952ADB00FAA282 /* ResisterEmailView */,
 				D2CA24E6299CF73A006CF7CB /* BoardingRecordView */,
+				D241E2DB299F293000BF7709 /* boardingAllocationView */,
 				D26293A029959136003A6D7A /* Model */,
 				D2244DEA29952BCD00FAA282 /* Extension */,
 				D2244DEC29952C4800FAA282 /* Constant */,
@@ -164,6 +169,15 @@
 				D2C688B62992F122001E9114 /* AppKeys.swift */,
 			);
 			path = Constant;
+			sourceTree = "<group>";
+		};
+		D241E2DB299F293000BF7709 /* boardingAllocationView */ = {
+			isa = PBXGroup;
+			children = (
+				D241E2DC299F298500BF7709 /* BoardingAllocationViewController.swift */,
+				D241E2DE299F29AB00BF7709 /* BoardingAllocationViewModel.swift */,
+			);
+			path = boardingAllocationView;
 			sourceTree = "<group>";
 		};
 		D26293A029959136003A6D7A /* Model */ = {
@@ -342,8 +356,10 @@
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
 				D2CA24E8299CF760006CF7CB /* BoardingRecordViewModel.swift in Sources */,
+				D241E2DF299F29AB00BF7709 /* BoardingAllocationViewModel.swift in Sources */,
 				D2CA24EE299CFB79006CF7CB /* BoardingHistory.swift in Sources */,
 				D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */,
+				D241E2DD299F298500BF7709 /* BoardingAllocationViewController.swift in Sources */,
 				D26293A229959156003A6D7A /* Page.swift in Sources */,
 				D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */,
 				D2CA24EC299CFB5E006CF7CB /* Section.swift in Sources */,

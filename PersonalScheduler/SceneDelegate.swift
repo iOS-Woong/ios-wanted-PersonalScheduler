@@ -18,10 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let loginViewModel = LoginViewModel()
-//        let loginViewController = LoginViewController(loginViewModel: loginViewModel)
-        let boardingViewModel = BoardingRecordViewModel()
-        let boardingRecordViewController = BoardingRecordViewController(boardingRecordViewModel: boardingViewModel)
-        let navigationController = UINavigationController(rootViewController: boardingRecordViewController)
+        let loginViewController = LoginViewController(loginViewModel: loginViewModel)
+// 테이블뷰 테스트용
+//        let boardingViewModel = BoardingRecordViewModel()
+//        let boardingRecordViewController = BoardingRecordViewController(boardingRecordViewModel: boardingViewModel)
+        let navigationController = UINavigationController(rootViewController: loginViewController)
         
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController

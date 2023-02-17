@@ -93,9 +93,7 @@ class LoginEmailViewController: UIViewController, UserInputable {
             self.signUpViewModel.signIn(email: inputInfo.email, pw: inputInfo.password) { [weak self] result in
                 switch result {
                 case .success(_):
-                    self?.dismiss(animated: true) {
-                        self?.activityIndicator.isHidden = true
-                    }
+                    self?.presentTabbarController()
                 case .failure(_):
                     self?.userInformationInputTextFiled.setupTextFieldBottomBorder(mode: false)
                     self?.activityIndicator.isHidden = true
@@ -213,5 +211,24 @@ extension LoginEmailViewController {
     }
 }
 
-// 아이디를 쓰고, 다음을 누르면 일치하는 아이디가 있는지 체크한다.
-
+extension LoginEmailViewController {
+    private func presentTabbarController() {
+        let boardingRecordViewModel = BoardingRecordViewModel()
+        let boardingRecordViewController = BoardingRecordViewController(boardingRecordViewModel: boardingRecordViewModel)
+        let boardingRecordNavigationViewController = UINavigationController(rootViewController: boardingRecordViewController)
+        
+        let boardingAllocationViewModel = BoardingAllocationViewModel()
+        let boardingAllocationViewController = BoardingAllocationViewController(boardingAllocationViewModel: boardingAllocationViewModel)
+        
+        let tabbarController = UITabBarController()
+        tabbarController.setViewControllers([boardingAllocationViewController, boardingRecordNavigationViewController], animated: false)
+        
+        boardingRecordNavigationViewController.tabBarItem = UITabBarItem(title: "운행기록", image: nil, selectedImage: nil)
+        boardingAllocationViewController.tabBarItem = UITabBarItem(title: "배차", image: nil, selectedImage: nil)
+        
+        tabbarController.modalPresentationStyle = .fullScreen
+        self.present(tabbarController, animated: true, completion: {
+            self.activityIndicator.isHidden = true
+        })
+    }
+}

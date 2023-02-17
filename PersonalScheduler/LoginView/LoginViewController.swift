@@ -117,6 +117,17 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        
+        indicator.center = self.view.center
+        indicator.style = .whiteLarge
+        indicator.startAnimating()
+        indicator.isHidden = true
+        
+        return indicator
+    }()
+    
     init(loginViewModel: LoginViewModel) {
         self.loginViewModel = loginViewModel
         super.init(nibName: nil, bundle: nil)
@@ -136,15 +147,17 @@ class LoginViewController: UIViewController {
     
     private func setupButton() {
         let kakaoLoginAction = UIAction { [weak self] _ in
+            self?.activityIndicator.isHidden = false
             //TODO: 카카오 로그인
-            self?.loginViewModel.kakaoLogin(completion: { result in
+            self?.loginViewModel.kakaoLogin(completion: { [weak self] result in
                 switch result {
                 case .success(_):
                     // 프로젝트로 넘기기
-                    print("WOW KAKAO Login")
+                    print("WOW KAKAO Can Login.")
+                    self?.presentTabbarController()
                 case .failure(_):
-                    //
                     print("WOW KAKAO Can not Login.")
+                    self?.activityIndicator.isHidden = true
                 }
             })
         }
@@ -153,10 +166,11 @@ class LoginViewController: UIViewController {
         let facebookLoginAction = UIAction { [weak self] _ in
             //TODO: 페이스북 로그인
             if let self = self {
-                self.loginViewModel.fbLogin(self) { result in
+                self.loginViewModel.fbLogin(self) { [weak self] result in
                     switch result {
                     case .success(_):
                         print("WOW KAKAO Login")
+                        self?.presentTabbarController()
                     case .failure(_):
                         print("WOW FB Can not Login")
                     }
@@ -166,22 +180,19 @@ class LoginViewController: UIViewController {
         facebookLoginButton.addAction(facebookLoginAction, for: .touchUpInside)
         
         let emailResisterAction = UIAction { [weak self] _ in
-            let signUpViewModel = ResisterEmailViewModel()
-            let emailViewController = ResisterEmailViewController(signUpviewModel: signUpViewModel,
-                                                          page: .email)
-            let navigationController = UINavigationController(rootViewController: emailViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            self?.present(navigationController, animated: true)
+            
+            let resisterEmailViewModel = ResisterEmailViewModel()
+            let resisterEmailViewController = ResisterEmailViewController(signUpviewModel: resisterEmailViewModel,
+                                                                  page: .email)
+            self?.presentNavigationViewController(to: resisterEmailViewController)
         }
         emailResisterButton.addAction(emailResisterAction, for: .touchUpInside)
         
         let emailLoginAction = UIAction { [weak self] _ in
-            let signUpViewModel = ResisterEmailViewModel()
-            let logInEmailViewController = LoginEmailViewController(signUpviewModel: signUpViewModel,
+            let resisterEmailViewModel = ResisterEmailViewModel()
+            let logInEmailViewController = LoginEmailViewController(signUpviewModel: resisterEmailViewModel,
                                                                     page: .email)
-            let navigationController = UINavigationController(rootViewController: logInEmailViewController)
-            navigationController.modalPresentationStyle = .fullScreen
-            self?.present(navigationController, animated: true)
+            self?.presentNavigationViewController(to: logInEmailViewController)
         }
         emailLoginButton.addAction(emailLoginAction, for: .touchUpInside)
     }
@@ -195,7 +206,7 @@ class LoginViewController: UIViewController {
         [emailLoginButton ,emailFlagLabel ,emailResisterButton].forEach(emailLoginButtonStackView.addArrangedSubview(_:))
         [kakaoLoginButton, facebookLoginButton].forEach(loginButtonStackView.addArrangedSubview(_:))
         
-        [labelStackView, loginButtonStackView, emailLoginButtonStackView].forEach(view.addSubview(_:))
+        [labelStackView, loginButtonStackView, emailLoginButtonStackView, activityIndicator].forEach(view.addSubview(_:))
         
         NSLayoutConstraint.activate([
             labelStackView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 30),
@@ -227,3 +238,32 @@ class LoginViewController: UIViewController {
     }
 }
 
+
+extension LoginViewController {
+    private func presentTabbarController() {
+        let boardingRecordViewModel = BoardingRecordViewModel()
+        let boardingRecordViewController = BoardingRecordViewController(boardingRecordViewModel: boardingRecordViewModel)
+        let boardingRecordNavigationViewController = UINavigationController(rootViewController: boardingRecordViewController)
+        
+        let boardingAllocationViewModel = BoardingAllocationViewModel()
+        let boardingAllocationViewController = BoardingAllocationViewController(boardingAllocationViewModel: boardingAllocationViewModel)
+        
+        let tabbarController = UITabBarController()
+        tabbarController.setViewControllers([boardingAllocationViewController, boardingRecordNavigationViewController], animated: false)
+        
+        boardingRecordNavigationViewController.tabBarItem = UITabBarItem(title: "운행기록", image: nil, selectedImage: nil)
+        boardingAllocationViewController.tabBarItem = UITabBarItem(title: "배차", image: nil, selectedImage: nil)
+        
+        tabbarController.modalPresentationStyle = .fullScreen
+        self.present(tabbarController, animated: true, completion: {
+            self.activityIndicator.isHidden = true
+        })
+    }
+    
+    private func presentNavigationViewController(to viewController: UIViewController) {
+        let targetViewController = viewController
+        let navigationController = UINavigationController(rootViewController: targetViewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.present(navigationController, animated: true)
+    }
+}
