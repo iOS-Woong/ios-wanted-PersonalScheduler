@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Vision
 
 
 class LoginEmailViewController: UIViewController, UserInputable {
@@ -222,6 +223,7 @@ extension LoginEmailViewController {
         
         let tabbarController = UITabBarController()
         tabbarController.setViewControllers([boardingAllocationViewController, boardingRecordNavigationViewController], animated: false)
+        
         
         boardingRecordNavigationViewController.tabBarItem = UITabBarItem(title: "운행기록", image: nil, selectedImage: nil)
         boardingAllocationViewController.tabBarItem = UITabBarItem(title: "배차", image: nil, selectedImage: nil)

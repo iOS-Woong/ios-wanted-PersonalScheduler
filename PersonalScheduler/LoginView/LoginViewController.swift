@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     private let loginViewModel: LoginViewModel
+    private let geoCodeApiManager = GeoCodeApiManager()
     
     let headLabel = {
         let label = UILabel()
@@ -140,6 +141,14 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        geoCodeApiManager.requestGeoCode { result in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure)
+            }
+        }
         setupBackground()
         setupViews()
         setupButton()
