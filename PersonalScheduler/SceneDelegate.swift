@@ -19,6 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let loginViewModel = LoginViewModel()
         let loginViewController = LoginViewController(loginViewModel: loginViewModel)
+// 테이블뷰 테스트용
+//        let boardingViewModel = BoardingRecordViewModel()
+//        let boardingRecordViewController = BoardingRecordViewController(boardingRecordViewModel: boardingViewModel)
         let navigationController = UINavigationController(rootViewController: loginViewController)
         
         window = UIWindow(windowScene: windowScene)
