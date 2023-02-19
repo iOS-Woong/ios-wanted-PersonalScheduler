@@ -35,6 +35,8 @@
 		D2CA24F2299CFDFC006CF7CB /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */; };
 		D2D6600B29979347007D75C2 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6600A29979347007D75C2 /* Observable.swift */; };
 		D2D6B70229A0D63500E6188C /* GeoCodeApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6B70129A0D63500E6188C /* GeoCodeApiManager.swift */; };
+		D2D6B74A29A2130D00E6188C /* ReverseGeoCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6B74929A2130D00E6188C /* ReverseGeoCode.swift */; };
+		D2D6B74C29A214FF00E6188C /* Coords.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D6B74B29A214FF00E6188C /* Coords.swift */; };
 		D2EE1FCC2999286E00BA5541 /* KakaoLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */; };
 		DCCD84ED4350F8AF6C38ACEE /* Pods_PersonalScheduler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16A719DF145223ACD47F2AB3 /* Pods_PersonalScheduler.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		D2D6600A29979347007D75C2 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		D2D6B70129A0D63500E6188C /* GeoCodeApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCodeApiManager.swift; sourceTree = "<group>"; };
+		D2D6B74929A2130D00E6188C /* ReverseGeoCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReverseGeoCode.swift; sourceTree = "<group>"; };
+		D2D6B74B29A214FF00E6188C /* Coords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coords.swift; sourceTree = "<group>"; };
 		D2EE1FCB2999286E00BA5541 /* KakaoLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoLoginManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,6 +196,8 @@
 				D2CA24EB299CFB5E006CF7CB /* Section.swift */,
 				D2CA24ED299CFB79006CF7CB /* BoardingHistory.swift */,
 				D2CA24F1299CFDFC006CF7CB /* ReusableView.swift */,
+				D2D6B74929A2130D00E6188C /* ReverseGeoCode.swift */,
+				D2D6B74B29A214FF00E6188C /* Coords.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -358,12 +364,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				63AAAB062967EA2600775EC3 /* LoginViewController.swift in Sources */,
+				D2D6B74C29A214FF00E6188C /* Coords.swift in Sources */,
 				D2CA24E8299CF760006CF7CB /* BoardingRecordViewModel.swift in Sources */,
 				D241E2DF299F29AB00BF7709 /* BoardingAllocationViewModel.swift in Sources */,
 				D2CA24EE299CFB79006CF7CB /* BoardingHistory.swift in Sources */,
 				D2C2CE3F299A49C70065B63F /* FBLoginManager.swift in Sources */,
 				D241E2DD299F298500BF7709 /* BoardingAllocationViewController.swift in Sources */,
 				D26293A229959156003A6D7A /* Page.swift in Sources */,
+				D2D6B74A29A2130D00E6188C /* ReverseGeoCode.swift in Sources */,
 				D2D6B70229A0D63500E6188C /* GeoCodeApiManager.swift in Sources */,
 				D2C2CE3C299A3A040065B63F /* FirebaseManager.swift in Sources */,
 				D2CA24EC299CFB5E006CF7CB /* Section.swift in Sources */,
